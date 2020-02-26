@@ -1,5 +1,4 @@
 import re
-
 automovel = {}
 
 def readFile(file):
@@ -7,13 +6,12 @@ def readFile(file):
     
 
     if re.search("Categoria", data [0]):
-        automovel['name'] = data[3]
+        automovel['nome'] = data[3]
     else:
-        automovel['name'] = data[0]
+        automovel['nome'] = data[0]
 
     index = 0
     for row in data:
-
         if re.search("ANO\n", row.upper()):
             automovel['ano'] = data[index+1]
         elif re.search("COR\n", row.upper()):
@@ -28,5 +26,6 @@ def readFile(file):
             result = re.split("\s",row)
             automovel['motor'] = result[9]
         index += 1
-     
+
+
     return automovel
