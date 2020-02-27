@@ -13,15 +13,15 @@ def readFile(file):
     index = 0
     for row in data:
         if re.search("ANO\n", row.upper()):
-            automovel['ano'] = data[index+1]
+            automovel['ano'] = re.sub('\s','',data[index+1])
         elif re.search("COR\n", row.upper()):
-            automovel['cor'] = data[index+1]
+            automovel['cor'] = re.sub('\n','',data[index+1])
         elif re.search("KM", row.upper()):
-            automovel['km'] = data[index+1]
+            automovel['km'] = re.sub('\n','',data[index+1])
         elif re.search("QUILOMETRAGEM", row.upper()):
-            automovel['km'] = data[index+1]
+            automovel['km'] = re.sub('\n','',data[index+1])
         elif re.search("MOTOR\n", row.upper()):
-            automovel['motor'] = data[index+1]
+            automovel['motor'] = re.sub('\n','',data[index+1])
         elif re.search("MOTOR: ", row.upper()):
             result = re.split("\s",row)
             automovel['motor'] = result[9]
